@@ -5,6 +5,7 @@ set -e
 declare -A arr
 
 setup() {
+  sudo apt -y update && sudo apt -y upgrade
   rm -rf "$HOME/.vim"
 }
 
@@ -15,6 +16,8 @@ vim() {
   mkdir -p $plugins_start_dir
 
   arr["ale"]="dense-analysis/ale.git"
+  arr+=( ["vim-commentary"]="tpope/vim-commentary" ["ctrlp.vim"]="ctrlpvim/ctrlp.vim.git" )
+
   for key in ${!arr[@]}; do
     echo ${key} ${arr[${key}]}
     git clone "https://github.com/${arr[${key}]}" "${plugins_start_dir}/${key}"
