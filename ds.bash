@@ -9,6 +9,11 @@ setup() {
   rm -rf "$HOME/.vim"
 }
 
+git() {
+  sudo apt install git
+  wget -O $HOME/.gitconfig https://raw.githubusercontent.com/kazimir-malevich/dotfiles/master/.gitconfig
+}
+
 vim() {
   plugins_start_dir="$HOME/.vim/pack/plugins/start"
   sudo apt install vim
@@ -29,5 +34,6 @@ teardown() {
 }
 
 setup
+git
 vim
 teardown
