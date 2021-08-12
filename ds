@@ -29,9 +29,13 @@ setup_vim() {
   done
 }
 
+setup_langs() {
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+}
+
 setup_tmux() {
   sudo apt install tmux
-  wget -O  $HOME/.tmux https://github.com/kazimir-malevich/dotfiles/blob/master/.tmux.conf
+  sudo apt -y autoremove
 }
 
 teardown_all() {
@@ -42,4 +46,5 @@ setup_all
 setup_git
 setup_vim
 setup_tmux
+setup_langs
 teardown_all
