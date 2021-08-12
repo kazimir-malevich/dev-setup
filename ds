@@ -4,6 +4,7 @@ set -e
 
 setup_all() {
   sudo apt -y update && sudo apt -y upgrade
+  sudo apt install build-essential
   rm -rf $HOME/.vim
 }
 
@@ -35,7 +36,7 @@ setup_langs() {
 
 setup_tmux() {
   sudo apt install tmux
-  sudo apt -y autoremove
+  wget -O $HOME/.tmux.conf https://raw.githubusercontent.com/kazimir-malevich/dotfiles/master/.tmux.conf
 }
 
 teardown_all() {
