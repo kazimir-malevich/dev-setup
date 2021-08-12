@@ -21,12 +21,17 @@ setup_vim() {
   mkdir -p $plugins_start_dir && cd $plugins_start_dir
 
   declare -a plugins
-  plugins=("dense-analysis/ale.git" "tpope/vim-commentary" "ctrlpvim/ctrlp.vim.git")
+  plugins=("dense-analysis/ale.git" "tpope/vim-commentary" "ctrlpvim/ctrlp.vim.git" "christoomey/vim-tmux-navigator")
   cd $plugins_start_dir
 
   for i in ${plugins[@]}; do
     git clone "https://github.com/${i}"
   done
+}
+
+setup_tmux() {
+  sudo apt install tmux
+  wget -O  $HOME/.tmux https://github.com/kazimir-malevich/dotfiles/blob/master/.tmux.conf
 }
 
 teardown_all() {
@@ -36,4 +41,5 @@ teardown_all() {
 setup_all
 setup_git
 setup_vim
+setup_tmux
 teardown_all
