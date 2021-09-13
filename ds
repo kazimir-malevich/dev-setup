@@ -37,8 +37,15 @@ alias vi='vim'
 alias ..="cd .."
 alias ll='ls -lahF'
 alias cl='clear'
-alias py=python3
+alias py='python3'
+alias python='python3'
+alias pip='pip3'
 EOT
+}
+
+setup_python() {
+  sudo apt -y install python3-pip
+  sudo apt -y install pylint
 }
 
 setup_tmux() {
