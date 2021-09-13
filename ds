@@ -45,7 +45,7 @@ EOT
 
 setup_python() {
   sudo apt -y install python3-pip
-  sudo apt -y install pylint
+  python3 -m pip install flake8
 }
 
 setup_tmux() {
@@ -62,4 +62,5 @@ setup_git
 setup_vim
 setup_tmux
 setup_bash
+setup_python
 teardown_all
