@@ -9,14 +9,14 @@ setup_all() {
 }
 
 setup_git() {
-  sudo apt install git
+  sudo apt -y install git
   wget -O $HOME/.gitconfig https://raw.githubusercontent.com/kazimir-malevich/dotfiles/master/.gitconfig
 }
 
 setup_vim() {
   plugins_start_dir="$HOME/.vim/pack/plugins/start/"
 
-  sudo apt install vim
+  sudo apt -y install vim
   wget -O $HOME/.vimrc https://raw.githubusercontent.com/kazimir-malevich/dotfiles/master/.vimrc
 
   mkdir -p $plugins_start_dir && cd $plugins_start_dir
@@ -30,12 +30,19 @@ setup_vim() {
   done
 }
 
-setup_langs() {
-  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+setup_bash() {
+cat <<EOT >> $HOME/.bashrc
+
+alias vi='vim'
+alias ..="cd .."
+alias ll='ls -lahF'
+alias cl='clear'
+alias py=python3
+EOT
 }
 
 setup_tmux() {
-  sudo apt install tmux
+  sudo apt -y install tmux
   wget -O $HOME/.tmux.conf https://raw.githubusercontent.com/kazimir-malevich/dotfiles/master/.tmux.conf
 }
 
@@ -47,5 +54,5 @@ setup_all
 setup_git
 setup_vim
 setup_tmux
-setup_langs
+setup_bash
 teardown_all
