@@ -40,6 +40,9 @@ alias cl='clear'
 alias py='python3'
 alias python='python3'
 alias pip='pip3'
+
+# pip3 binary dir
+export PATH=$PATH:$HOME/.local/bin
 EOT
 }
 
