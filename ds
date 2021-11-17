@@ -51,6 +51,10 @@ setup_python() {
   python3 -m pip install flake8
 }
 
+setup_openjdk() {
+  sudo apt -y install openjdk-11-jdk
+}
+
 setup_tmux() {
   sudo apt -y install tmux
   wget -O $HOME/.tmux.conf https://raw.githubusercontent.com/kazimir-malevich/dotfiles/master/.tmux.conf
@@ -66,4 +70,5 @@ setup_vim
 setup_tmux
 setup_bash
 setup_python
+setup_openjdk
 teardown_all
