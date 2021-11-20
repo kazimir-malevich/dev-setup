@@ -67,6 +67,10 @@ setup_tmux() {
   wget -O $HOME/.tmux.conf https://raw.githubusercontent.com/kazimir-malevich/dotfiles/master/.tmux.conf
 }
 
+setup_misc() {
+  sudo apt -y install tree
+}
+
 teardown_all() {
   sudo apt -y autoremove
 }
@@ -78,4 +82,5 @@ setup_tmux
 setup_bash
 setup_python
 setup_openjdk
+setup_misc
 teardown_all
