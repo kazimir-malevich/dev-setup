@@ -41,8 +41,8 @@ alias py='python3'
 alias python='python3'
 alias pip='pip3'
 
-# pip3 binary dir
-export PATH=$PATH:$HOME/.local/bin
+export JAVA_HOME=/usr/lib/jvm/openjdk-11
+export PATH=$PATH:$HOME/.local/bin:$JAVA_HOME/bin
 EOT
 }
 
