@@ -51,8 +51,8 @@ setup_python() {
   python3 -m pip install flake8
 }
 
-setup_openjdk() {
-  sudo apt -y install openjdk-11-jdk
+setup_jvm() {
+  sudo apt -y install openjdk-11-jdk sbt
 }
 
 setup_tmux() {
@@ -74,6 +74,6 @@ setup_vim
 setup_tmux
 setup_bash
 setup_python
-setup_openjdk
+setup_jvm
 setup_misc
 teardown_all
