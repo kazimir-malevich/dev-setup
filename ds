@@ -51,13 +51,6 @@ setup_python() {
 
 setup_openjdk() {
   sudo apt -y install openjdk-11-jdk
-  cd $HOME
-  wget https://github.com/pmd/pmd/releases/download/pmd_releases%2F6.40.0/pmd-bin-6.40.0.zip
-  unzip pmd-bin-6.40.0.zip
-  alias pmd="$HOME/pmd-bin-6.40.0/bin/run.sh pmd"
-  # fork
-  bash
-  pmd -d /usr/src -R rulesets/java/quickstart.xml -f text
 }
 
 setup_tmux() {
