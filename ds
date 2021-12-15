@@ -40,6 +40,8 @@ alias cl='clear'
 alias py='python'
 
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+export CLASSPATH=.:/usr/lib/jvm/java-11-openjdk-amd64/lib
+
 export PATH=$PATH:$HOME/.local/bin:$JAVA_HOME/bin
 EOT
 }
