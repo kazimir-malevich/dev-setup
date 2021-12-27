@@ -39,6 +39,10 @@ alias ll='ls -lahF'
 alias cl='clear'
 alias py='python'
 
+create_dirs() {
+  mkdir -p src/{main,test}/$1
+}
+
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 export CLASSPATH=.:/usr/lib/jvm/java-11-openjdk-amd64/lib
 
