@@ -22,7 +22,7 @@ setup_vim() {
   mkdir -p $plugins_start_dir && cd $plugins_start_dir
 
   declare -a plugins
-  plugins=("dense-analysis/ale.git" "tpope/vim-commentary" "ctrlpvim/ctrlp.vim.git" "christoomey/vim-tmux-navigator")
+  plugins=("dense-analysis/ale.git" "tpope/vim-commentary" "ctrlpvim/ctrlp.vim.git" "christoomey/vim-tmux-navigator" "udalov/kotlin-vim.git")
   cd $plugins_start_dir
 
   for i in ${plugins[@]}; do
