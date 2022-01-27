@@ -59,11 +59,8 @@ setup_python() {
 setup_jvm() {
   sudo apt -y install openjdk-11-jdk
   curl -s "https://get.sdkman.io" | bash
-  #fork
-  bash
-  sdk install gradle 7.3.3
-  sdk install kotlin
   source "$HOME/.sdkman/bin/sdkman-init.sh"
+  sdk install kotlin
 }
 
 setup_tmux() {
