@@ -63,6 +63,7 @@ setup_jvm() {
   bash
   sdk install gradle 7.3.3
   sdk install kotlin
+  source "$HOME/.sdkman/bin/sdkman-init.sh"
 }
 
 setup_tmux() {
@@ -83,7 +84,7 @@ setup_git
 setup_vim
 setup_tmux
 setup_bash
-setup_python
+# setup_python
 setup_jvm
 setup_misc
 teardown_all
