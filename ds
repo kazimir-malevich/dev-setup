@@ -51,11 +51,6 @@ export PATH=$PATH:$HOME/.local/bin:$JAVA_HOME/bin
 EOT
 }
 
-setup_python() {
-  sudo apt -y install python3-pip
-  python3 -m pip install flake8
-}
-
 setup_jvm() {
   sudo apt -y install openjdk-11-jdk
   sudo snap install --classic kotlin
@@ -79,7 +74,6 @@ setup_git
 setup_vim
 setup_tmux
 setup_bash
-# setup_python
 setup_jvm
 setup_misc
 teardown_all
