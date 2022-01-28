@@ -40,20 +40,11 @@ alias ll='ls -lahF'
 alias cl='clear'
 alias py='python'
 
-create_dirs() {
-  mkdir -p src/{main,test}/$1
-}
-
-export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
-export CLASSPATH=.:/usr/lib/jvm/java-11-openjdk-amd64/lib
-
-export PATH=$PATH:$HOME/.local/bin:$JAVA_HOME/bin
 EOT
 }
 
 setup_jvm() {
-  sudo apt -y install openjdk-11-jdk
-  sudo snap install --classic kotlin
+  sudo apt -y install --classic kotlin
 }
 
 setup_tmux() {
