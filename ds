@@ -44,7 +44,7 @@ EOT
 }
 
 setup_jvm() {
-  sudo apt -y install --classic kotlin
+  sudo snap install --classic kotlin
 }
 
 setup_tmux() {
