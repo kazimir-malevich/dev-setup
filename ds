@@ -34,17 +34,27 @@ setup_vim() {
 setup_bash() {
 cat <<EOT >> $HOME/.bashrc
 
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+export CLASSPATH=.:/usr/lib/jvm/java-11-openjdk-amd64/lib
+export PATH=$PATH:$HOME/.local/bin:$JAVA_HOME/bin
+
 alias vi='vim'
 alias ..="cd .."
 alias ll='ls -lahF'
 alias cl='clear'
-alias py='python'
+alias py='python
+
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+export CLASSPATH=.:/usr/lib/jvm/java-11-openjdk-amd64/lib
+export PATH=$PATH:$HOME/.local/bin:$JAVA_HOME/bin
 
 EOT
 }
 
 setup_jvm() {
+  sudo apt -y install openjdk-11-jdk
   sudo snap install --classic kotlin
+  
 }
 
 setup_tmux() {
