@@ -74,5 +74,6 @@ setup_vim
 setup_tmux
 setup_bash
 setup_js
+setup_k6
 setup_misc
 teardown_all
