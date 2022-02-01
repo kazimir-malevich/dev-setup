@@ -23,7 +23,7 @@ setup_vim() {
   mkdir -p $plugins_start_dir && cd $plugins_start_dir
 
   declare -a plugins
-  plugins=("dense-analysis/ale.git" "tpope/vim-commentary" "ctrlpvim/ctrlp.vim.git" "christoomey/vim-tmux-navigator" "udalov/kotlin-vim.git")
+  plugins=("dense-analysis/ale.git" "tpope/vim-commentary" "ctrlpvim/ctrlp.vim.git" "christoomey/vim-tmux-navigator" "sheerun/vim-polyglot")
   cd $plugins_start_dir
 
   for i in ${plugins[@]}; do
@@ -34,10 +34,6 @@ setup_vim() {
 setup_bash() {
 cat <<EOT >> $HOME/.bashrc
 
-export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
-export CLASSPATH=.:/usr/lib/jvm/java-11-openjdk-amd64/lib
-export PATH=$PATH:$HOME/.local/bin:$JAVA_HOME/bin
-
 alias vi='vim'
 alias ..="cd .."
 alias ll='ls -lahF'
@@ -47,10 +43,9 @@ alias py='python'
 EOT
 }
 
-setup_jvm() {
-  sudo apt -y install openjdk-11-jdk
-  sudo snap install --classic kotlin
-  
+setup_js() {
+  sudo apt -y install nodejs npm 
+  npm install eslint --save-dev
 }
 
 setup_tmux() {
@@ -71,6 +66,6 @@ setup_git
 setup_vim
 setup_tmux
 setup_bash
-setup_jvm
+setup_js
 setup_misc
 teardown_all
