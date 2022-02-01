@@ -44,8 +44,7 @@ EOT
 }
 
 setup_js() {
-  sudo apt -y install nodejs npm 
-  npm install eslint --save-dev
+  sudo apt -y install nodejs npm
 }
 
 setup_k6() {
