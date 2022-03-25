@@ -23,7 +23,8 @@ setup_vim() {
   mkdir -p $plugins_start_dir && cd $plugins_start_dir
 
   declare -a plugins
-  plugins=("dense-analysis/ale.git" "tpope/vim-commentary" "ctrlpvim/ctrlp.vim.git" "christoomey/vim-tmux-navigator" "sheerun/vim-polyglot" "prettier/vim-prettier")
+
+  plugins=("dense-analysis/ale.git" "tpope/vim-commentary" "ctrlpvim/ctrlp.vim.git" "christoomey/vim-tmux-navigator")
   cd $plugins_start_dir
 
   for i in ${plugins[@]}; do
@@ -41,17 +42,6 @@ alias cl='clear'
 alias py='python'
 
 EOT
-}
-
-setup_js() {
-  sudo apt -y install nodejs npm
-}
-
-setup_k6() {
-  sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C5AD17C747E3415A3642D57D77C6C491D6AC1D69
-  echo "deb https://dl.k6.io/deb stable main" | sudo tee /etc/apt/sources.list.d/k6.list
-  sudo apt-get update
-  sudo apt-get install k6
 }
 
 setup_tmux() {
@@ -72,7 +62,5 @@ setup_git
 setup_vim
 setup_tmux
 setup_bash
-setup_js
-setup_k6
 setup_misc
 teardown_all
