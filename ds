@@ -34,7 +34,8 @@ setup_vim() {
 }
 
 setup_bash() {
-if [ "grep -c alias vi='vim' ~/.bashrc -eq 1" ]; then return 0; fi
+if [[ $(grep -c "alias vi='vim'" $HOME/.bashrc) -eq 1 ]]; then return 0; fi
+
 cat <<EOT >> $HOME/.bashrc
 
 alias vi='vim'
@@ -42,6 +43,9 @@ alias ..="cd .."
 alias ll='ls -lahF'
 alias cl='clear'
 alias py='python'
+
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
 
 EOT
 }
@@ -69,5 +73,6 @@ setup_git
 setup_vim
 setup_tmux
 setup_bash
+setup_go
 setup_misc
 teardown_all
