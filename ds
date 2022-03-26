@@ -51,6 +51,11 @@ setup_tmux() {
   wget -O $HOME/.tmux.conf https://raw.githubusercontent.com/kazimir-malevich/dotfiles/master/.tmux.conf
 }
 
+setup_go() {
+  sudo snap install go --classic
+  mkdir $HOME/go
+}
+
 setup_misc() {
   sudo apt -y install tree
 }
