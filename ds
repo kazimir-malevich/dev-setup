@@ -24,7 +24,8 @@ setup_vim() {
 
   declare -a plugins
 
-  plugins=("dense-analysis/ale.git" "tpope/vim-commentary" "ctrlpvim/ctrlp.vim.git" "christoomey/vim-tmux-navigator")
+  plugins=("dense-analysis/ale.git" "tpope/vim-commentary" "ctrlpvim/ctrlp.vim.git" "christoomey/vim-tmux-navigator" \
+    "fatih/vim-go")
   cd $plugins_start_dir
 
   for i in ${plugins[@]}; do
@@ -33,6 +34,7 @@ setup_vim() {
 }
 
 setup_bash() {
+if [ "grep -c alias vi='vim' ~/.bashrc -eq 1" ]; then return 0; fi
 cat <<EOT >> $HOME/.bashrc
 
 alias vi='vim'
