@@ -25,7 +25,8 @@ setup_vim() {
   declare -a plugins
 
   plugins=("dense-analysis/ale.git" "tpope/vim-commentary" "ctrlpvim/ctrlp.vim.git" "christoomey/vim-tmux-navigator" \
-    "fatih/vim-go")
+    "rust-lang/rust.vim")
+
   cd $plugins_start_dir
 
   for i in ${plugins[@]}; do
@@ -52,6 +53,11 @@ setup_tmux() {
   wget -O $HOME/.tmux.conf https://raw.githubusercontent.com/kazimir-malevich/dotfiles/master/.tmux.conf
 }
 
+setup_rust() {
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+  source $HOME/.cargo/env
+}
+
 setup_misc() {
   sudo apt -y install tree
 }
@@ -65,5 +71,6 @@ setup_git
 setup_vim
 setup_tmux
 setup_bash
+setup_rust
 setup_misc
 teardown_all
