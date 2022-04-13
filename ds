@@ -6,7 +6,7 @@ setup_all() {
   sudo apt -y update && sudo apt -y upgrade
   sudo apt -y install build-essential
   sudo apt -y install curl
-  rm -rf $HOME/.vim
+  rm -rf $HOME/.vim $HOME/bin
 }
 
 setup_git() {
@@ -45,6 +45,7 @@ alias ll='ls -lahF'
 alias cl='clear'
 alias py='python'
 
+export PATH='$PATH:$HOME/bin'
 EOT
 }
 
@@ -57,9 +58,12 @@ setup_rust() {
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
   source $HOME/.cargo/env
 
-  git clone https://github.com/rust-analyzer/rust-analyzer.git &&
-    cd rust-analyzer
-  cargo xtask install --server
+  # rust-analyzer
+  mkdir ~/bin
+  curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > ~/bin/rust-analyzer
+  chmod +x ~/bin/rust-analyzer
+
+
 }
 
 setup_misc() {
