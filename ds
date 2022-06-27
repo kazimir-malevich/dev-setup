@@ -70,6 +70,7 @@ setup_rust() {
 
 setup_misc() {
   sudo apt -y install tree
+  sudo apt install tldr && tldr --update
 }
 
 teardown_all() {
