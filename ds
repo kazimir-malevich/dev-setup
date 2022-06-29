@@ -25,7 +25,7 @@ setup_vim() {
   declare -a plugins
 
   plugins=("dense-analysis/ale.git" "tpope/vim-commentary" "ctrlpvim/ctrlp.vim.git" "christoomey/vim-tmux-navigator" \
-    "rust-lang/rust.vim")
+    "/sheerun/vim-polyglot")
 
   cd $plugins_start_dir
 
@@ -66,6 +66,10 @@ setup_rust() {
 
   # needed for cargo check
   sudo apt install libssl-dev pkg-config
+}
+
+setup_js() {
+  sudo apt -y install nodejs npm
 }
 
 setup_misc() {
