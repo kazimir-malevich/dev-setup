@@ -35,6 +35,8 @@ setup_vim() {
 
   git clone --branch release https://github.com/neoclide/coc.nvim.git --depth=1
   vim -c "helptags coc.nvim/doc/ | q"
+
+  echo '{ "coc.preferences.formatOnSaveFiletypes": ["*"] }' >> ~/.vim/coc-settings.json
 }
 
 setup_bash() {
