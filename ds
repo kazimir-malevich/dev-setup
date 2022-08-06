@@ -25,7 +25,7 @@ setup_vim() {
   declare -a plugins
 
   plugins=("tpope/vim-commentary" "ctrlpvim/ctrlp.vim.git" "christoomey/vim-tmux-navigator" \
-    "sheerun/vim-polyglot" "jiangmiao/auto-pairs")
+    "sheerun/vim-polyglot" "jiangmiao/auto-pairs" "dense-analysis/ale")
 
   cd $plugins_start_dir
 
@@ -33,10 +33,6 @@ setup_vim() {
     git clone "https://github.com/${i}"
   done
 
-  git clone --branch release https://github.com/neoclide/coc.nvim.git --depth=1
-  vim -c "helptags coc.nvim/doc/ | q"
-
-  echo '{ "coc.preferences.formatOnSaveFiletypes": ["*"] }' >> ~/.vim/coc-settings.json
 }
 
 setup_bash() {
