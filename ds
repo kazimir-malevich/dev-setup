@@ -5,8 +5,7 @@ set -e
 setup_all() {
   sudo apt -y update && sudo apt -y upgrade
   sudo apt -y install build-essential
-  sudo apt -y install curl
-  rm -rf $HOME/.vim $HOME/bin
+  rm -rf $HOME/.vim
 }
 
 setup_git() {
@@ -24,8 +23,8 @@ setup_vim() {
 
   declare -a plugins
 
-  plugins=("tpope/vim-commentary" "ctrlpvim/ctrlp.vim.git" "christoomey/vim-tmux-navigator" \
-    "sheerun/vim-polyglot" "jiangmiao/auto-pairs" "dense-analysis/ale")
+  plugins=("tpope/vim-commentary" "ctrlpvim/ctrlp.vim.git" \
+    "sheerun/vim-polyglot" "dense-analysis/ale")
 
   cd $plugins_start_dir
 
@@ -36,24 +35,17 @@ setup_vim() {
 }
 
 setup_bash() {
-if grep -q "alias vi='vim'" ~/.bashrc; then return 0; fi
+  if grep -q "alias vi='vim'" ~/.bashrc; then return 0; fi
 
-cat <<EOT >> $HOME/.bashrc
+  cat <<EOT >> $HOME/.bashrc
 
-alias vi='vim'
-alias ..="cd .."
-alias ll='ls -lahF'
-alias cl='clear'
-alias py='python'
+  alias vi='vim'
+  alias ..="cd .."
+  alias ll='ls -lahF'
+  alias cl='clear'
+  alias py='python'
 
-export PATH=$PATH:$HOME/bin
-
-EOT
-}
-
-setup_tmux() {
-  sudo apt -y install tmux
-  wget -O $HOME/.tmux.conf https://raw.githubusercontent.com/kazimir-malevich/dotfiles/master/.tmux.conf
+  EOT
 }
 
 setup_rust() {
@@ -70,7 +62,7 @@ setup_rust() {
 }
 
 setup_js() {
-  sudo apt -y install nodejs npm
+  sudo apt -y install nodejs yarn
 }
 
 setup_misc() {
@@ -85,7 +77,6 @@ teardown_all() {
 setup_all
 setup_git
 setup_vim
-setup_tmux
 setup_bash
 setup_rust
 setup_misc
