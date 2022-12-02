@@ -24,7 +24,7 @@ setup_vim() {
   declare -a plugins
 
   plugins=("tpope/vim-commentary" "ctrlpvim/ctrlp.vim.git" \
-    "sheerun/vim-polyglot" "dense-analysis/ale")
+    "sheerun/vim-polyglot" "dense-analysis/ale" "christoomey/vim-tmux-navigator")
 
   cd $plugins_start_dir
 
