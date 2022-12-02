@@ -29,45 +29,44 @@ setup_vim() {
   cd $plugins_start_dir
 
   for i in ${plugins[@]}; do
-    git clone "https://github.com/${i}"
+    git clone --depth 1 "https://github.com/${i}"
   done
 
+  cd
+
+}
+
+setup_tmux() {
+  sudo apt -y install tmux
+  wget -O $HOME/.tmux.conf https://raw.githubusercontent.com/kazimir-malevich/dotfiles/master/.tmux.conf
 }
 
 setup_bash() {
-  if grep -q "alias vi='vim'" ~/.bashrc; then return 0; fi
+if grep -q "alias vi='vim'" ~/.bashrc; then return 0; fi
 
-  cat <<EOT >> $HOME/.bashrc
+cat <<EOT >> $HOME/.bashrc
 
-  alias vi='vim'
-  alias ..="cd .."
-  alias ll='ls -lahF'
-  alias cl='clear'
-  alias py='python'
+alias vi='vim'
+alias ..="cd .."
+alias ll='ls -lahF'
+alias cl='clear'
+alias py='python'
 
-  EOT
-}
+echo PATH=~/.npm-global/bin:$PATH
 
-setup_rust() {
-  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-  source $HOME/.cargo/env
-
-  # rust-analyzer
-  mkdir ~/bin
-  curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > ~/bin/rust-analyzer
-  chmod +x ~/bin/rust-analyzer
-
-  # needed for cargo check
-  sudo apt install libssl-dev pkg-config
+EOT
 }
 
 setup_js() {
-  sudo apt -y install nodejs yarn
+  DIR=~/.npm-global
+  sudo apt -y install nodejs npm
+  [[ -d $DIR ]] || mkdir $DIR
+  npm config set prefix $DIR
 }
 
 setup_misc() {
   sudo apt -y install tree
-  sudo apt install tldr && tldr --update
+  bash; npm install -g tldr
 }
 
 teardown_all() {
@@ -76,8 +75,8 @@ teardown_all() {
 
 setup_all
 setup_git
+setup_js
 setup_vim
 setup_bash
-setup_rust
 setup_misc
 teardown_all
