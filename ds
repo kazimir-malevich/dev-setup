@@ -76,6 +76,7 @@ teardown_all() {
 setup_all
 setup_git
 setup_js
+setup_tmux
 setup_vim
 setup_bash
 setup_misc
