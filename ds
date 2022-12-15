@@ -52,7 +52,7 @@ alias ll='ls -lahF'
 alias cl='clear'
 alias py='python'
 
-echo PATH=~/.npm-global/bin:$PATH
+export PATH=~/.npm-global/bin:$PATH
 
 EOT
 }
