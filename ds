@@ -58,15 +58,15 @@ EOT
 }
 
 setup_js() {
-  DIR=~/.npm-global
+  dir=~/.npm-global
   sudo apt -y install nodejs npm
-  [[ -d $DIR ]] || mkdir $DIR
-  npm config set prefix $DIR
+  [[ -d $dir ]] || mkdir $dir
+  npm config set prefix $dir
 }
 
 setup_misc() {
   sudo apt -y install tree
-  bash; npm install -g tldr
+  npm install -g tldr
 }
 
 teardown_all() {
