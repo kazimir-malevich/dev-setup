@@ -62,6 +62,7 @@ setup_js() {
   sudo apt -y install nodejs npm
   [[ -d $dir ]] || mkdir $dir
   npm config set prefix $dir
+  npm install -g eslint
 }
 
 setup_misc() {
