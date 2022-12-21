@@ -63,6 +63,7 @@ setup_js() {
   [[ -d $dir ]] || mkdir $dir
   npm config set prefix $dir
   npm install -g eslint
+  npm install -g prettier
 }
 
 setup_misc() {
