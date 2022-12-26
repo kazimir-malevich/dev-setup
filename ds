@@ -66,6 +66,9 @@ setup_js() {
 }
 
 setup_jvm() {
+  sudo apt install default-jdk
+  sudo apt-get install openjdk-11-source
+  
  # Using Coursier and https://github.com/scala/scala-seed.g8
 }
 
