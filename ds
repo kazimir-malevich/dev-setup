@@ -35,6 +35,11 @@ setup_vim() {
   cd
 }
 
+setup_neovim() {  
+  sudo apt -y install neovim
+}
+
+
 setup_tmux() {
   sudo apt -y install tmux
   wget -O $HOME/.tmux.conf https://raw.githubusercontent.com/kazimir-malevich/dotfiles/master/.tmux.conf
@@ -46,6 +51,7 @@ if grep -q "alias vi='vim'" ~/.bashrc; then return 0; fi
 cat <<EOT >> $HOME/.bashrc
 
 alias vi='vim'
+alias nv='neovim'
 alias ..="cd .."
 alias ll='ls -lahF'
 alias cl='clear'
@@ -86,6 +92,7 @@ setup_git
 setup_js
 setup_tmux
 setup_vim
+setup_neovim
 setup_bash
 setup_jvm
 setup_misc
