@@ -37,6 +37,8 @@ setup_vim() {
 
 setup_neovim() {  
   sudo apt -y install neovim
+  mkdir -p ~/.config/nvim/
+  wget -O $HOME/init.vim https://raw.githubusercontent.com/kazimir-malevich/dotfiles/master/init.vim
 }
 
 
