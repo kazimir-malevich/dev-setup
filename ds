@@ -48,6 +48,7 @@ setup_js() {
   npm config set prefix $dir
   npm install -g eslint
   npm install -g prettier
+  npm install -g yarn
 }
 
 setup_jvm() {
