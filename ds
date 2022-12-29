@@ -13,41 +13,15 @@ setup_git() {
   wget -O $HOME/.gitconfig https://raw.githubusercontent.com/kazimir-malevich/dotfiles/master/.gitconfig
 }
 
-setup_vim() {
-  plugins_start_dir="$HOME/.vim/pack/plugins/start/"
-
-  sudo apt -y install vim
-  wget -O $HOME/.vimrc https://raw.githubusercontent.com/kazimir-malevich/dotfiles/master/.vimrc
-
-  mkdir -p $plugins_start_dir && cd $plugins_start_dir
-
-  declare -a plugins
-
-  plugins=("tpope/vim-commentary" "ctrlpvim/ctrlp.vim.git" \
-    "sheerun/vim-polyglot" "dense-analysis/ale" "christoomey/vim-tmux-navigator")
-
-  cd $plugins_start_dir
-
-  for i in ${plugins[@]}; do
-    git clone --depth 1 "https://github.com/${i}"
-  done
-
-  cd
-}
-
 setup_neovim() {  
-  sudo apt -y install neovim
+  wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
+  sudo tar zxvf nvim-linux64.tar.gz -C /opt 
+  ln -s /opt/nvim-macos/bin/nvim /usr/local/bin/nvim
   mkdir -p ~/.config/nvim/
   wget -O $HOME/init.vim https://raw.githubusercontent.com/kazimir-malevich/dotfiles/master/init.vim
   # install vim-plug
   sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-}
-
-
-setup_tmux() {
-  sudo apt -y install tmux
-  wget -O $HOME/.tmux.conf https://raw.githubusercontent.com/kazimir-malevich/dotfiles/master/.tmux.conf
 }
 
 setup_bash() {
@@ -56,7 +30,7 @@ if grep -q "alias vi='vim'" ~/.bashrc; then return 0; fi
 cat <<EOT >> $HOME/.bashrc
 
 alias vi='vim'
-alias nv='neovim'
+alias nv='nvim'
 alias ..="cd .."
 alias ll='ls -lahF'
 alias cl='clear'
@@ -95,8 +69,6 @@ teardown_all() {
 setup_all
 setup_git
 setup_js
-setup_tmux
-setup_vim
 setup_neovim
 setup_bash
 setup_jvm
