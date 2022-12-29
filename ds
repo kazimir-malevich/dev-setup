@@ -16,7 +16,7 @@ setup_git() {
 setup_neovim() {  
   wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
   sudo tar zxvf nvim-linux64.tar.gz -C /opt 
-  ln -s /opt/nvim-macos/bin/nvim /usr/local/bin/nvim
+  sudo ln -s /opt/nvim-linux64/bin/nvim /usr/local/bin/nvim
   mkdir -p ~/.config/nvim/
   wget -O $HOME/init.vim https://raw.githubusercontent.com/kazimir-malevich/dotfiles/master/init.vim
   # install vim-plug
