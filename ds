@@ -14,6 +14,7 @@ setup_git() {
 }
 
 setup_neovim() {  
+  rm /usr/local/bin/nvim
   wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
   sudo tar zxvf nvim-linux64.tar.gz -C /opt 
   sudo ln -s /opt/nvim-linux64/bin/nvim /usr/local/bin/nvim
@@ -22,6 +23,11 @@ setup_neovim() {
   # install vim-plug
   sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+}
+
+setup_tmux() {
+  sudo apt -y install tmux
+  wget -O $HOME/.tmux.conf https://raw.githubusercontent.com/kazimir-malevich/dotfiles/master/.tmux.conf
 }
 
 setup_bash() {
@@ -71,6 +77,7 @@ setup_all
 setup_git
 setup_js
 setup_neovim
+setup_tmux
 setup_bash
 setup_jvm
 setup_misc
