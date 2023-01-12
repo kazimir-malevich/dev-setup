@@ -30,6 +30,11 @@ setup_tmux() {
   wget -O $HOME/.tmux.conf https://raw.githubusercontent.com/kazimir-malevich/dotfiles/master/.tmux.conf
 }
 
+setup_emacs() {
+  sudo apt -y install emacs
+  wget -O $HOME/.emacs https://raw.githubusercontent.com/susam/emfy/main/.emacs
+}
+
 setup_bash() {
 if grep -q "alias vi='vim'" ~/.bashrc; then return 0; fi
 
@@ -78,6 +83,7 @@ setup_git
 setup_js
 setup_neovim
 setup_tmux
+setup_emacs
 setup_bash
 setup_jvm
 setup_misc
