@@ -5,34 +5,11 @@ set -e
 setup_all() {
   sudo apt -y update && sudo apt -y upgrade
   sudo apt -y install build-essential
-  rm -rf $HOME/.vim
 }
 
 setup_git() {
   sudo apt -y install git
   wget -O $HOME/.gitconfig https://raw.githubusercontent.com/kazimir-malevich/dotfiles/master/.gitconfig
-}
-
-setup_neovim() {  
-  rm /usr/local/bin/nvim
-  wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
-  sudo tar zxvf nvim-linux64.tar.gz -C /opt 
-  sudo ln -s /opt/nvim-linux64/bin/nvim /usr/local/bin/nvim
-  mkdir -p ~/.config/nvim/
-  wget -O $HOME/init.vim https://raw.githubusercontent.com/kazimir-malevich/dotfiles/master/init.vim
-  # install vim-plug
-  sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-}
-
-setup_tmux() {
-  sudo apt -y install tmux
-  wget -O $HOME/.tmux.conf https://raw.githubusercontent.com/kazimir-malevich/dotfiles/master/.tmux.conf
-}
-
-setup_emacs() {
-  sudo apt -y install emacs
-  wget -O $HOME/.emacs https://raw.githubusercontent.com/susam/emfy/main/.emacs
 }
 
 setup_bash() {
@@ -41,7 +18,6 @@ if grep -q "alias vi='vim'" ~/.bashrc; then return 0; fi
 cat <<EOT >> $HOME/.bashrc
 
 alias vi='vim'
-alias nv='nvim'
 alias ..="cd .."
 alias ll='ls -lahF'
 alias cl='clear'
@@ -62,13 +38,6 @@ setup_js() {
   npm install -g yarn
 }
 
-setup_jvm() {
-  sudo apt install default-jdk
-  sudo apt-get install openjdk-11-source
-  
- # Using Coursier and https://github.com/scala/scala-seed.g8
-}
-
 setup_misc() {
   sudo apt -y install tree
   npm install -g tldr
@@ -81,10 +50,6 @@ teardown_all() {
 setup_all
 setup_git
 setup_js
-setup_neovim
-setup_tmux
-setup_emacs
 setup_bash
-setup_jvm
 setup_misc
 teardown_all
