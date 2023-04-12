@@ -28,6 +28,12 @@ export PATH=~/.npm-global/bin:$PATH
 EOT
 }
 
+setup_rust() {
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+  rustup component add rust-src
+  rustup component add rust-analyzer
+}
+
 setup_js() {
   dir=~/.npm-global
   sudo apt -y install nodejs npm
@@ -49,6 +55,7 @@ teardown_all() {
 
 setup_all
 setup_git
+setup_rust
 setup_js
 setup_bash
 setup_misc
