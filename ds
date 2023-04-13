@@ -50,6 +50,7 @@ setup_js() {
 setup_misc() {
   sudo apt -y install tree
   npm install -g tldr
+  mkdir $HOME/projects
 }
 
 teardown_all() {
