@@ -33,6 +33,8 @@ setup_rust() {
   source "$HOME/.cargo/env"
   rustup component add rust-src
   rustup component add rust-analyzer
+  # https://github.com/helix-editor/helix/wiki/How-to-install-the-default-language-servers#rust
+  sudo ln -s $(rustup which rust-analyzer ) /usr/local/bin/rust-analyzer
 }
 
 setup_js() {
